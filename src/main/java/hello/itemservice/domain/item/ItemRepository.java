@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 public class ItemRepository {
 
-    private static final Map<Long, Item> store = new HashMap<>();
+    private static final Map<Long, Item> store = new ConcurrentHashMap<>(); //static
     private static long sequence = 0L; //static利用
 
     public Item save(Item item) {
@@ -37,4 +38,5 @@ public class ItemRepository {
     public void clearStore() {
         store.clear();
     }
+
 }
